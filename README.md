@@ -1,6 +1,6 @@
 # DevOps Project Report: Automated CI/CD Pipeline for a 2-Tier Flask Application on AWS
 
-*Author:* Dhruv Nirwan
+*Author:* Anmay Kapoor
 *Date:*   02 November 2025
 
 ---
