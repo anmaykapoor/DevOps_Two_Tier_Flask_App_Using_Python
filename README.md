@@ -20,7 +20,7 @@ This document outlines the step-by-step process for deploying a 2-tier web appli
 
 <img width="771" height="822" alt="project_workflow" src="https://github.com/user-attachments/assets/52dbe517-2ced-44a1-bbe7-db6c112becb6" />
 
-<img width="771" height="822" alt="project_workflow" src="https://github.com/user-attachments/assets/36407a59-c92d-4b58-a283-0e6dcf60e39f" />
+ssh -i /path/to/key.pem ubuntu@<ec2-public-ip>
 
 4. Step 2: Install Dependencies on EC2
 Update System Packages:
