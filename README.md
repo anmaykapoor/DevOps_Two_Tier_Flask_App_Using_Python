@@ -18,49 +18,10 @@ Work flow Diagram
 1. Project Overview
 This document outlines the step-by-step process for deploying a 2-tier web application (Flask + MySQL) on an AWS EC2 instance. The deployment is containerized using Docker and Docker Compose. A full CI/CD pipeline is established using Jenkins to automate the build and deployment process whenever new code is pushed to a GitHub repository.
 
-2. Architecture Diagram
-+-----------------+      +----------------------+      +-----------------------------+
-|   Developer     |----->|     GitHub Repo      |----->|        Jenkins Server       |
-| (pushes code)   |      | (Source Code Mgmt)   |      |  (on AWS EC2)               |
-+-----------------+      +----------------------+      |                             |
-                                                       | 1. Clones Repo              |
-                                                       | 2. Builds Docker Image      |
-                                                       | 3. Runs Docker Compose      |
-                                                       +--------------+--------------+
-                                                                      |
-                                                                      | Deploys
-                                                                      v
-                                                       +-----------------------------+
-                                                       |      Application Server     |
-                                                       |      (Same AWS EC2)         |
-                                                       |                             |
-                                                       | +-------------------------+ |
-                                                       | | Docker Container: Flask | |
-                                                       | +-------------------------+ |
-                                                       |              |              |
-                                                       |              v              |
-                                                       | +-------------------------+ |
-                                                       | | Docker Container: MySQL | |
-                                                       | +-------------------------+ |
-                                                       +-----------------------------+
-3. Step 1: AWS EC2 Instance Preparation
-Launch EC2 Instance:
+<img width="771" height="822" alt="project_workflow" src="https://github.com/user-attachments/assets/52dbe517-2ced-44a1-bbe7-db6c112becb6" />
 
-Navigate to the AWS EC2 console.
-Launch a new instance using the Ubuntu 22.04 LTS AMI.
-Select the t2.micro instance type for free-tier eligibility.
-Create and assign a new key pair for SSH access.
-Configure Security Group:
+<img width="771" height="822" alt="project_workflow" src="https://github.com/user-attachments/assets/36407a59-c92d-4b58-a283-0e6dcf60e39f" />
 
-Create a security group with the following inbound rules:
-Type: SSH, Protocol: TCP, Port: 22, Source: Your IP
-Type: HTTP, Protocol: TCP, Port: 80, Source: Anywhere (0.0.0.0/0)
-Type: Custom TCP, Protocol: TCP, Port: 5000 (for Flask), Source: Anywhere (0.0.0.0/0)
-Type: Custom TCP, Protocol: TCP, Port: 8080 (for Jenkins), Source: Anywhere (0.0.0.0/0)
-Connect to EC2 Instance:
-
-Use SSH to connect to the instance's public IP address.
-ssh -i /path/to/key.pem ubuntu@<ec2-public-ip>
 4. Step 2: Install Dependencies on EC2
 Update System Packages:
 
